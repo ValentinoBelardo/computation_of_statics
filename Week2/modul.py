@@ -9,9 +9,6 @@ def med(data:list):
     else:
         indeks=int((n+1)/2)
         result=sum(dummy_data[indeks[0]-1:indeks[1]])/2
-
-        
-
     return result
 def varian(data:list):
     dummy_data=0#dummy data

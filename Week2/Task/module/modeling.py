@@ -41,8 +41,13 @@ class statistic:
         for x in lst:
             if x<min_value:
                 min_value=x
-            result.append(min_value)
+        result.append(min_value)
+        lst.remove(min_value)
+        if result == 0:
+            return "Semua item memiliki frequensi sama"
+        else:
         # apabila hasilnya 0,maka hasilnya tidak ada yang banyak alias jumlah frequensy item sama banyak
+            pass
         return result
     def _variation(data:list):
         """In probability theory and statistics, variance is the expectation of the squared deviation of a random variable from its population mean or sample mean. Variance is a measure of dispersion, meaning it is a measure of how far a set of numbers is spread out from their average value"""
@@ -54,26 +59,18 @@ class statistic:
         result=_sum/(count-1)
         return result
     def _cov(x:list,y:list):
-        n=len(x)
         # is like _variation
         # for mean we call function _mean()
         # subtracing mean from the individual elements
-        # documentation refence https://python.plainenglish.io/covariance-calculation-using-python-45b6a8e5df9f
+        # documentation refence https://python.plain.english.io/covariance-calculation-using-python-45b6a8e5df9f
+        n=len(x)
         x_sub=[i-statistic._mean(x) for i in x]
         y_sub=[i-statistic._mean(y) for i in y]
         numberic=sum([x_sub[a]*y_sub[a] for a in range(n)])
         result=numberic/(n-1)
         return result
     def _correlation(x:list,y:list):
-        # n=len(x)
-        # sum_x=sum([i for i in x])
-        # sum_y=sum([i for i in y])
-        # sum_xy=sum([a*b for a,b in zip(x,y)])
-        # sum_x2=sum([i for i in x])
-        # sum_y2=sum([i for i in y])
         result=statistic._cov(x,y)/pow((statistic._variation(x)*statistic._variation(y)),0.5)
-        
-            
         return result
 
 
